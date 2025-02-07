@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import light from "../../assets/light.png";
 import dark from "../../assets/dark.png";
+
 const Darkmode = () => {
-  const [theme, setTheme] = React.useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-  const elements = document.documentElement;
-
-  React.useEffect(() => {
+  useEffect(() => {
+    const elements = document.documentElement;
     if (theme === "dark") {
       elements.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -20,20 +19,21 @@ const Darkmode = () => {
 
   return (
     <div className="relative">
-      <img
-        src={light}
-        alt=""
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className={`w-12 cursor-pointer drop-shadow-md hover:rotate-20 transition-all duration-300 absolute right-0 z-10${
-          theme === "dark"
-        }`}
-      />
-      <img
-        src={dark}
-        alt=""
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        className={`w-12 cursor-pointer drop-shadow-md hover:rotate-20`}
-      />
+      {theme === "light" ? (
+        <img
+          src={light}
+          alt="Light Mode"
+          onClick={() => setTheme("dark")}
+          className="w-12 cursor-pointer drop-shodow-md hover:rotate-20 absoute right-0 z-10 "
+        />
+      ) : (
+        <img
+          src={dark}
+          alt="Dark Mode"
+          onClick={() => setTheme("light")}
+          className="w-12 cursor-pointer drop-shodow-md hover:rotate-20 absoute right-0 z-10"
+        />
+      )}
     </div>
   );
 };
