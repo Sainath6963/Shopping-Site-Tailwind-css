@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import TopProducts from "./components/TopProducts/TopProducts";
 import Banner from "./components/Banner/Banner";
+import Subscribe from "./components/Subscribe/Subscribe";
+import Testimonial from "./components/Testimonials/Testimonial";
 
 function App() {
   React.useEffect(() => {
@@ -26,6 +28,9 @@ function App() {
       <Products />
       <TopProducts />
       <Banner />
+      <Subscribe />
+      <Products />
+      <Testimonial />
     </>
   );
 }
